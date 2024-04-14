@@ -45,9 +45,7 @@ Follow these steps to set up and run the project:
 - Press F5 to build and run the application.
 - The API will be available at https://localhost:5001/swagger
 
-4. ****
-
-API Endpoints:
+4. **API Endpoints:**
 
 - Use Swagger UI to explore and test the available endpoints.
 
