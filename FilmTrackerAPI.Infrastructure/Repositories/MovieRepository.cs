@@ -9,36 +9,38 @@ using System.Threading.Tasks;
 
 namespace FilmTrackerAPI.Infrastructure.Repositories
 {
-    public class MovieRepository(DataContext _context) : IMovieRepository
+    public class MovieRepository(ApplicationDbContext context) : IMovieRepository
     {
 
         public async Task<Movie> GetByIdAsync(int id)
         {
-            return await _context.Movies.FindAsync(id);
+            var movie = await context.Movies.FindAsync(id);
+
+            return movie ?? throw new KeyNotFoundException($"Movie with ID {id} was not found.");
         }
 
         public async Task<IEnumerable<Movie>> GetAllAsync()
         {
-            return await _context.Movies.ToListAsync();
+            return await context.Movies.ToListAsync();
         }
 
         public async Task<IEnumerable<Movie>> GetMoviesByWatchlistIdAsync(int watchlistId)
         {
-            return await _context.Movies
-                .Where(m => int.Parse(m.WatchlistId) == watchlistId)
+            return await context.Movies
+                .Where(m => m.WatchlistId == watchlistId)
                 .ToListAsync();
         }
 
         public async Task AddAsync(Movie movie)
         {
-            _context.Movies.Add(movie);
-            await _context.SaveChangesAsync();
+            context.Movies.Add(movie);
+            await context.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(Movie movie)
         {
-            _context.Movies.Update(movie);
-            await _context.SaveChangesAsync();
+            context.Movies.Update(movie);
+            await context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(int id)
@@ -46,16 +48,16 @@ namespace FilmTrackerAPI.Infrastructure.Repositories
             var movie = await GetByIdAsync(id);
             if (movie != null)
             {
-                _context.Movies.Remove(movie);
-                await _context.SaveChangesAsync();
+                context.Movies.Remove(movie);
+                await context.SaveChangesAsync();
             }
         }
 
         public async Task<IEnumerable<Movie>> SearchByNameAsync(string movieName)
         {
-            return await _context.Movies
-         .Where(m => EF.Functions.Like(m.Title, $"%{movieName}%"))
-         .ToListAsync();
+            return await context.Movies
+                .Where(m => EF.Functions.Like(m.Title, $"%{movieName}%"))
+                .ToListAsync();
         }
     }
 }

@@ -11,25 +11,31 @@ using System.Threading.Tasks;
 namespace FilmTrackerAPI.Application.Handlers
 {
     public class AddMovieToWatchlistCommandHandler(IMovieRepository movieRepository, IWatchlistRepository watchlistRepository)
-    : IRequestHandler<AddMovieToWatchlistCommand, bool>
+    : IRequestHandler<AddMovieToWatchlistCommand, Unit>
     {
-        public async Task<bool> Handle(AddMovieToWatchlistCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(AddMovieToWatchlistCommand request, CancellationToken cancellationToken)
         {
             var watchlist = await watchlistRepository.GetByIdAsync(request.WatchlistId);
-            if (watchlist == null || watchlist.UserId != request.UserId)
+            if (watchlist == null)
             {
-                return false;
+                throw new KeyNotFoundException($"Watchlist with ID {request.WatchlistId} not found.");
+            }
+
+            if (watchlist.UserId != request.UserId)
+            {
+                throw new InvalidOperationException("User ID does not match the owner of the watchlist.");
             }
 
             var movie = await movieRepository.GetByIdAsync(request.MovieId);
             if (movie == null)
             {
-                return false;
+                throw new KeyNotFoundException($"Movie with ID {request.MovieId} not found.");
             }
 
             watchlist.Movies.Add(movie);
             await watchlistRepository.UpdateAsync(watchlist);
-            return true;
+
+            return Unit.Value;
         }
     }
 }

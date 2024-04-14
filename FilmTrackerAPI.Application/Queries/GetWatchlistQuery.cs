@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace FilmTrackerAPI.Application.Queries
 {
-    public record GetAllWatchlistsQuery(string UserId) : IRequest<IEnumerable<Watchlist>>;
+    public record GetWatchlistQuery(int WatchlistId) : IRequest<Watchlist>;
 }

@@ -9,39 +9,34 @@ using System.Threading.Tasks;
 
 namespace FilmTrackerAPI.Infrastructure.Repositories
 {
-    public class WatchlistRepository : IWatchlistRepository
+    public class WatchlistRepository(ApplicationDbContext context) : IWatchlistRepository
     {
-        private readonly DataContext _context;
-
-        public WatchlistRepository(DataContext context)
-        {
-            _context = context;
-        }
-
         public async Task<Watchlist> GetByIdAsync(int id)
         {
-            return await _context.Watchlists
-                .Include(w => w.Movies)
-                .FirstOrDefaultAsync(w => w.Id == id);
+            var watchlist = await context.Watchlists
+                                         .Include(w => w.Movies)
+                                         .FirstOrDefaultAsync(w => w.Id == id);
+
+            return watchlist ?? throw new KeyNotFoundException($"Watchlist with ID {id} was not found.");
         }
 
         public async Task<IEnumerable<Watchlist>> GetAllAsync()
         {
-            return await _context.Watchlists
+            return await context.Watchlists
                 .Include(w => w.Movies)
                 .ToListAsync();
         }
 
         public async Task AddAsync(Watchlist watchlist)
         {
-            _context.Watchlists.Add(watchlist);
-            await _context.SaveChangesAsync();
+            context.Watchlists.Add(watchlist);
+            await context.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(Watchlist watchlist)
         {
-            _context.Watchlists.Update(watchlist);
-            await _context.SaveChangesAsync();
+            context.Watchlists.Update(watchlist);
+            await context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(int id)
@@ -49,9 +44,17 @@ namespace FilmTrackerAPI.Infrastructure.Repositories
             var watchlist = await GetByIdAsync(id);
             if (watchlist != null)
             {
-                _context.Watchlists.Remove(watchlist);
-                await _context.SaveChangesAsync();
+                context.Watchlists.Remove(watchlist);
+                await context.SaveChangesAsync();
             }
         }
+        public async Task<IEnumerable<Watchlist>> GetAllByUserIdAsync(string userId)
+        {
+            return await context.Watchlists
+                .Where(w => w.UserId == userId)
+                .Include(w => w.Movies)
+                .ToListAsync();
+        }
+
     }
 }

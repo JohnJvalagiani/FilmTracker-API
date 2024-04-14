@@ -14,6 +14,6 @@ namespace FilmTrackerAPI.Domain.Interfaces
        public Task AddAsync(Watchlist watchlist);
        public Task UpdateAsync(Watchlist watchlist);
        public Task DeleteAsync(int id);
-        Task<IEnumerable<Watchlist>> GetAllByUserIdAsync(object userId);
+        Task<IEnumerable<Watchlist>> GetAllByUserIdAsync(string userId);
     }
 }

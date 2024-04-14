@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace FilmTrackerAPI.Application.Handlers
 {
-    public class GetAllWatchlistsQuery(IWatchlistRepository watchlistRepository) 
-        : IRequestHandler<GetWatchlistQuery, Watchlist>
+    public class GetAllWatchlistsQueryHandler(IWatchlistRepository watchlistRepository) 
+        : IRequestHandler<GetAllWatchlistsQuery, IEnumerable<Watchlist>>
     {
         public async Task<IEnumerable<Watchlist>> Handle(GetAllWatchlistsQuery request, CancellationToken cancellationToken)
         {

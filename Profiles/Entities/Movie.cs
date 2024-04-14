@@ -14,7 +14,7 @@ namespace FilmTrackerAPI.Domain.Entities
         public DateTime ReleaseDate { get; set; }
         public string? Genre { get; set; }
         public bool IsWatched { get; set; }
-        public string? WatchlistId { get; set; }
+        public int WatchlistId { get; set; }
         public Watchlist? Watchlist { get; set; }
     }
 }

@@ -1,12 +1,11 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MediatR;
 
 namespace FilmTrackerAPI.Application.Commands
 {
-    public record AddMovieToWatchlistCommand(int MovieId, int WatchlistId, string UserId) : IRequest<Unit>;
-
+    public record MarkMovieAsWatchedCommand(int MovieId, string UserId): IRequest<Unit>;
 }
