@@ -3,10 +3,18 @@ using FilmTrackerAPI.Application.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FilmTracker_API.Controllers.V1
+namespace FilmTracker_API.Controllers
 {
+    /// <summary>
+    /// Controller for handling movie-related operations.
+    /// </summary>
     public class MovieController(IMediator mediator) : BaseController
     {
+        /// <summary>
+        /// Searches for movies by name.
+        /// </summary>
+        /// <param name="movieName">The name of the movie to search for.</param>
+        /// <returns>A list of movies matching the search query.</returns>
         [HttpGet("search")]
         public async Task<IActionResult> SearchByName([FromQuery] string movieName)
         {

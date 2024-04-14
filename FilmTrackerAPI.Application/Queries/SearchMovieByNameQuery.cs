@@ -1,4 +1,5 @@
-﻿using FilmTrackerAPI.Domain.Entities;
+﻿using FilmTrackerAPI.Application.Dtos;
+using FilmTrackerAPI.Domain.Entities;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,5 +9,5 @@ using System.Threading.Tasks;
 
 namespace FilmTrackerAPI.Application.Queries
 {
-    public record SearchMovieByNameQuery(string MovieName) : IRequest<IEnumerable<Movie>>;
+    public record SearchMovieByNameQuery(string MovieName) : IRequest<IEnumerable<MovieDto>>;
 }

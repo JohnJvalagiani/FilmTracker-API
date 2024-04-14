@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace FilmTrackerAPI.Application.Commands
 {
-    public record MarkMovieAsWatchedCommand(int MovieId, string UserId): IRequest<Unit>;
+    public record MarkMovieAsWatchedCommand(int MovieId, int watchListId, int UserId): IRequest<Unit>;
 }

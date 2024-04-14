@@ -7,6 +7,6 @@ using MediatR;
 
 namespace FilmTrackerAPI.Application.Commands
 {
-    public record AddMovieToWatchlistCommand(int MovieId, int WatchlistId, string UserId) : IRequest<Unit>;
+    public record AddMovieToWatchlistCommand(int MovieId, int WatchlistId, int UserId) : IRequest<Unit>;
 
 }

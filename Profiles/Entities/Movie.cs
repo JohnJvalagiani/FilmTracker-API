@@ -9,12 +9,11 @@ namespace FilmTrackerAPI.Domain.Entities
     public class Movie
     {
         public int Id { get; set; }
-        public string? Title { get; set; }
-        public string? Description { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
         public DateTime ReleaseDate { get; set; }
-        public string? Genre { get; set; }
+        public string Genre { get; set; }
         public bool IsWatched { get; set; }
-        public int WatchlistId { get; set; }
-        public Watchlist? Watchlist { get; set; }
+        public List<MovieWatchlist> MovieWatchlists { get; set; } = new List<MovieWatchlist>();
     }
 }

@@ -9,11 +9,9 @@ namespace FilmTrackerAPI.Domain.Interfaces
 {
     public interface IWatchlistRepository
     {
-       public Task<Watchlist> GetByIdAsync(int id);
-       public Task<IEnumerable<Watchlist>> GetAllAsync();
-       public Task AddAsync(Watchlist watchlist);
-       public Task UpdateAsync(Watchlist watchlist);
-       public Task DeleteAsync(int id);
-        Task<IEnumerable<Watchlist>> GetAllByUserIdAsync(string userId);
+        public Task MarkMovieAsWatchedAsync(int userId, int watchlistId, int movieId);
+        public Task AddMovieToWatchlistAsync(int userId, int watchlistId, int movieId);
+        public Task<IEnumerable<Movie>> GetAllByUserIdAsync(int userId);
+        public Task<IEnumerable<Watchlist>> GetWatchListsAsync(int userId);
     }
 }

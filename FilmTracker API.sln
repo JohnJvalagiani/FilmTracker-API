@@ -5,13 +5,13 @@ VisualStudioVersion = 17.9.34518.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilmTracker API", "FilmTracker API\FilmTracker API.csproj", "{9E3B7DA7-5C97-401A-A125-A97F4AA04362}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmTrackerAPI.Application", "FilmTrackerAPI.Application\FilmTrackerAPI.Application.csproj", "{A3EBE375-9AEF-426C-8C87-F9C0A8FB743E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilmTrackerAPI.Application", "FilmTrackerAPI.Application\FilmTrackerAPI.Application.csproj", "{A3EBE375-9AEF-426C-8C87-F9C0A8FB743E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmTrackerAPI.Infrastructure", "FilmTrackerAPI.Infrastructure\FilmTrackerAPI.Infrastructure.csproj", "{2CCF9D85-244D-4378-8D71-8EEA855CD3C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilmTrackerAPI.Infrastructure", "FilmTrackerAPI.Infrastructure\FilmTrackerAPI.Infrastructure.csproj", "{2CCF9D85-244D-4378-8D71-8EEA855CD3C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmTrackerAPI.Tests", "FilmTrackerAPI.Tests\FilmTrackerAPI.Tests.csproj", "{3877F050-0286-4D33-86A5-A5B18657FD5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilmTrackerAPI.Domain", "Profiles\FilmTrackerAPI.Domain.csproj", "{383E5511-50B2-4062-82F3-3D772D21D082}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmTrackerAPI.Domain", "Profiles\FilmTrackerAPI.Domain.csproj", "{383E5511-50B2-4062-82F3-3D772D21D082}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{AB626ABF-0A2C-4C9C-8B64-C863495933D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +31,14 @@ Global
 		{2CCF9D85-244D-4378-8D71-8EEA855CD3C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CCF9D85-244D-4378-8D71-8EEA855CD3C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CCF9D85-244D-4378-8D71-8EEA855CD3C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3877F050-0286-4D33-86A5-A5B18657FD5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3877F050-0286-4D33-86A5-A5B18657FD5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3877F050-0286-4D33-86A5-A5B18657FD5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3877F050-0286-4D33-86A5-A5B18657FD5A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{383E5511-50B2-4062-82F3-3D772D21D082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{383E5511-50B2-4062-82F3-3D772D21D082}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{383E5511-50B2-4062-82F3-3D772D21D082}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{383E5511-50B2-4062-82F3-3D772D21D082}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB626ABF-0A2C-4C9C-8B64-C863495933D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB626ABF-0A2C-4C9C-8B64-C863495933D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB626ABF-0A2C-4C9C-8B64-C863495933D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB626ABF-0A2C-4C9C-8B64-C863495933D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
