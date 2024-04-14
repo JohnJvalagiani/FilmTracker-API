@@ -30,9 +30,33 @@ Follow these steps to set up and run the project:
    
 2. **Database Configuration:**
 
-Update the connection string in appsettings.json to point to your MS SQL Server instance.
+- Update the connection string in appsettings.json to point to your MS SQL Server instance.
 
-Run the following commands in the Package Manager Console to create the initial database migration:
+- Run the following commands in the Package Manager Console to create the initial database migration:
+
+  ```bash
+  Add-Migration InitialCreate
+  Update-Database
+
+3. **Run the Application:**
+
+- Open the solution in Visual Studio 2022 Preview.
+- Set the startup project to the MovieApi project.
+- Press F5 to build and run the application.
+- The API will be available at https://localhost:5001/swagger
+
+4. ****
+
+API Endpoints:
+
+- Use Swagger UI to explore and test the available endpoints.
+
+- Examples:
+
+ - POST /api/movies: Add a movie to the watchlist.
+ - GET /api/movies: Get all movies in the watchlist.
+ - PUT /api/movies/{id}/watched: Mark a movie as watched.
+ - GET /api/movies/search?name=MovieName: Search for a movie by name.
 
 ## Overview
 
